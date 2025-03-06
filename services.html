@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Zex Communications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add AOS CSS and JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50 shadow-lg transition-shadow duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="images/logo3.png" 
+                         alt="Zex Communications Logo" 
+                         class="h-8 sm:h-12 w-auto"
+                         title="Zex">
+                    <span class="text-xl sm:text-3xl font-medium mx-1 mt-3">Communications</span>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="hover:text-blue-300 transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-blue-300 transition-colors">About</a>
+                    
+                    <!-- Products Dropdown -->
+                    <div class="relative group">
+                        <button class="hover:text-blue-300 transition-colors flex items-center gap-1">
+                            Products
+                            <i class="fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-blue-900 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100">
+                            <a href="products.html#security" class="block px-4 py-2 hover:bg-blue-800 transition-colors rounded-t-lg">Hardware Supply</a>
+                            <a href="products.html#communication" class="block px-4 py-2 hover:bg-blue-800 transition-colors rounded-b-lg">Software Installations</a>
+                        </div>
+                    </div>
+                    
+                    <a href="services.html" class="hover:text-blue-300 transition-colors">Services</a>
+                    <a href="contact.html" class="hover:text-blue-300 transition-colors">Contact</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" 
+                        class="md:hidden p-2 rounded-lg hover:bg-blue-800 transition-colors focus:outline-none" 
+                        title="Toggle Menu"
+                        aria-label="Toggle Menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Panel -->
+            <div id="mobile-menu" 
+                 class="fixed inset-0 bg-blue-900/95 backdrop-blur-sm transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+                 style="z-index: 9999; height: 100vh; overflow-y: scroll;">
+                <div class="flex flex-col min-h-screen">
+                    <!-- Mobile Menu Header -->
+                    <div class="flex items-center justify-between p-4 border-b border-blue-800 sticky top-0 bg-blue-900/95 backdrop-blur-sm z-10">
+                        <div class="flex items-center space-x-2">
+                            <img src="images/logo3.png" 
+                                 alt="Zex Communications Logo" 
+                                 class="h-8 w-auto"
+                                 title="Zex">
+                            <span class="text-xl font-medium">Communications</span>
+                        </div>
+                        <button id="mobile-menu-close" 
+                                class="p-2 rounded-lg hover:bg-blue-800 transition-colors"
+                                aria-label="Close Menu"
+                                title="Close Menu">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <!-- Mobile Menu Links -->
+                    <div class="flex-1 py-4">
+                        <a href="index.html" class="px-4 py-3 hover:bg-blue-800 transition-colors flex items-center space-x-2">
+                            <i class="fas fa-home w-6"></i>
+                            <span>Home</span>
+                        </a>
+                        <a href="about.html" class="px-4 py-3 hover:bg-blue-800 transition-colors flex items-center space-x-2">
+                            <i class="fas fa-info-circle w-6"></i>
+                            <span>About</span>
+                        </a>
+                        
+                        <!-- Products Dropdown Mobile -->
+                        <div class="relative">
+                            <button 
+                                class="w-full px-4 py-3 hover:bg-blue-800 transition-colors flex items-center justify-between"
+                                onclick="toggleMobileProductsMenu(event)"
+                                title="Toggle Products Menu">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-box w-6"></i>
+                                    <span>Products</span>
+                                </div>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-300" id="productsArrow"></i>
+                            </button>
+                            <div class="hidden bg-blue-800" id="mobileProductsMenu">
+                                <a href="products.html#security" class="px-4 py-3 hover:bg-blue-700 transition-colors flex items-center space-x-2 pl-12">
+                                    <i class="fas fa-shield-alt w-6"></i>
+                                    <span>Security Systems</span>
+                                </a>
+                                <a href="products.html#communication" class="px-4 py-3 hover:bg-blue-700 transition-colors flex items-center space-x-2 pl-12">
+                                    <i class="fas fa-satellite-dish w-6"></i>
+                                    <span>Communication Systems</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <a href="services.html" class="px-4 py-3 hover:bg-blue-800 transition-colors flex items-center space-x-2">
+                            <i class="fas fa-cog w-6"></i>
+                            <span>Services</span>
+                        </a>
+                        <a href="contact.html" class="px-4 py-3 hover:bg-blue-800 transition-colors flex items-center space-x-2">
+                            <i class="fas fa-envelope w-6"></i>
+                            <span>Contact</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Header -->
+    <header class="relative bg-blue-900 text-white py-24">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80" alt="Services" class="w-full h-full object-cover opacity-20">
+        </div>
+        <div class="relative container mx-auto text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Our Services</h1>
+            <p class="text-xl opacity-90">Comprehensive solutions for your business needs</p>
+        </div>
+    </header>
+
+    <!-- Services Content -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <!-- Service Grid 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up">
+                    <img src="https://regionsecurityguarding.co.uk/wp-content/uploads/2024/12/Who-can-install-a-security-camera.png" alt="Security System Installation" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">CCTV Technology Installations</h3>
+                        <p class="text-gray-600 mb-4">Professional installation of security systems including cameras, alarms, and access control. Our certified technicians ensure optimal placement and configuration for maximum security coverage.</p>
+                        <a href="service-details.html?id=1" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://www.wls.ltd/wp-content/uploads/2024/05/Door-access-control-system-installation-london.jpg" alt="Maintenance Services" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Biometric Installations</h3>
+                        <p class="text-gray-600 mb-4">Round-the-clock monitoring of your security systems with regular maintenance checks, software updates, and emergency repair services to ensure continuous protection.</p>
+                        <a href="service-details.html?id=2" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Grid 2 -->
+            <div class="grid grid-cols-1 my-5 md:grid-cols-2 gap-8">
+                <!-- Service Card 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up">
+                    <img src="https://www.dostech.ae/wp-content/uploads/2015/05/IP-PBX.jpg" alt="Solar Installation" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">PABX Telephpone and IP Phone Installations</h3>
+                        <p class="text-gray-600 mb-4">Expert installation of solar power systems for homes and businesses. Includes system design, permitting, installation, and grid connection services with warranty coverage.</p>
+                        <a href="service-details.html?id=3" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://assets.lendahand.com/article/image/904/w1920h1080_Solarenergy.jpg" alt="Security Consulting" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Solar System Installations</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive security assessments, risk analysis, and customized security planning for businesses. We help identify vulnerabilities and recommend optimal security solutions.</p>
+                        <a href="service-details.html?id=4" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Zex Communications</h3>
+                    <p>Providing cutting-edge security solutions for your peace of mind.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-blue-300">Home</a></li>
+                        <li><a href="about.html" class="hover:text-blue-300">About</a></li>
+                        <li><a href="products.html" class="hover:text-blue-300">Products</a></li>
+                        <li><a href="services.html" class="hover:text-blue-300">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p>Email: info@zexcomm.com</p>
+                    <p>Phone: (555) 123-4567</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
+        // Add hover effect to service cards
+        document.querySelectorAll('.bg-white').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('transform', 'scale-105', 'transition-transform');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('transform', 'scale-105', 'transition-transform');
+            });
+        });
+
+        // Add scroll event listener for nav shadow
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 0) {
+                nav.classList.add('shadow-xl', 'bg-blue-900/95', 'backdrop-blur-sm');
+            } else {
+                nav.classList.remove('shadow-xl', 'bg-blue-900/95', 'backdrop-blur-sm');
+            }
+        });
+    </script>
+</body>
+</html> 
